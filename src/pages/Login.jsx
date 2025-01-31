@@ -11,7 +11,7 @@ const getLoginVersion = (version) => {
     switch(version){
       case 1: return {
           bgImage: 'bg-login-background',
-          bgSize: 'bg-[length:100%_120%]',
+          bgSize: 'bg-cover',
           background: LoginOne,
           position: 'left-[10%] top-[20%]',
       }
