@@ -13,10 +13,10 @@ const ManageCourses = ({ setSelectedCourse, selectedCourse }) => {
       <h2 className="text-xl font-bold mb-4">Scheduled Attendances</h2>
       <button onClick={() => setSelectedCourse(null)} className="mb-4 text-blue-600 hover:underline">Back to Courses</button>
       <ul>
-        {scheduledAttendances.map((item) => (
+        {scheduledAttendances.map((item, idx) => (
           <li key={item.id} className="flex items-center justify-between py-2 border-b">
             <div>
-              <span className="font-semibold">{item.course}</span>
+              <span className="font-bold p-3 bg-[olive] text-white">{idx}</span>
               <p className="text-sm text-gray-600">{item.day} at {item.time}</p>
               <p className="text-sm text-gray-600">Attendance Taken: {item.attendanceCount}</p>
             </div>
@@ -27,7 +27,6 @@ const ManageCourses = ({ setSelectedCourse, selectedCourse }) => {
       {selectedAttendance && (
         <div className="mt-6">
           <h3 className="text-lg font-semibold mb-2">{selectedAttendance.course} - {selectedAttendance.day}, {selectedAttendance.time}</h3>
-          <Link to="/dashboard/attendance" className="mb-4 px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700">Start New Attendance</Link>
           <ul>
             {/* List all students here with attendance status */}
             <li className="py-2 border-b">John Doe - Present</li>
@@ -35,6 +34,7 @@ const ManageCourses = ({ setSelectedCourse, selectedCourse }) => {
           </ul>
         </div>
       )}
+<Link to="/dashboard/attendance" className="my-4 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 w-full">Start New Attendance</Link>
     </div>
   );
 };
