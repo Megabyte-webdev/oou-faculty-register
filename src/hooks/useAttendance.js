@@ -26,30 +26,46 @@ function useAttendance() {
     }
 
     const FingerprintScan = async () => {
-        setError({
-            message: "",
-            error: "",
-        });
-        setScanStatus('Configuring scanner...');
-        setIsLoading(true)
-        try {
-            setScanStatus('Scanning fingerprint...');
-            const data = await navigator.credentials.get({
-                publicKey: { challenge: new Uint8Array(32), timeout: 60000, userVerification: "required" }
-            });
-            setFingerprintData(data)
-            setScanStatus('Uploading fingerprint data...');
-            await client.post('/api/attendance', { data });
-            onSuccess({ message: "Attendance Status", success: "Attendance marked successfully!" })
-            setScanStatus('Attendance marked successfully!');
-            alert('Attendance marked successfully!');
-        } catch (error) {
-            setScanStatus('Failed to scan fingerprint.');
-            FormatError(error, setError, "Attendance Error");
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    setError({ message: "", error: "" });
+    setScanStatus('Configuring scanner...');
+    setIsLoading(true);
+    try {
+        setScanStatus('Scanning fingerprint...');
+
+        const publicKeyOptions = {
+            challenge: new Uint8Array(32),
+            rp: {
+                name: "School Register System",
+                id: window.location.hostname
+            },
+            user: {
+                id: Uint8Array.from(authDetails.user.id, c => c.charCodeAt(0)),
+                name: authDetails.user.email,
+                displayName: authDetails.user.fullName
+            },
+            pubKeyCredParams: [{ type: "public-key", alg: -7 }], // ECDSA with SHA-256
+            timeout: 60000,
+            authenticatorSelection: {
+                authenticatorAttachment: "platform",
+                userVerification: "required"
+            }
+        };
+
+        const data = await navigator.credentials.create({ publicKey: publicKeyOptions });
+        setFingerprintData(data);
+        setScanStatus('Uploading fingerprint data...');
+
+        await client.post('/api/attendance', { data });
+        onSuccess({ message: "Attendance Status", success: "Attendance marked successfully!" });
+        setScanStatus('Attendance marked successfully!');
+        alert('Attendance marked successfully!');
+    } catch (error) {
+        setScanStatus('Failed to scan fingerprint.');
+        FormatError(error, setError, "Attendance Error");
+    } finally {
+        setIsLoading(false);
+    }
+};
 
 
     useEffect(() => {
