@@ -16,7 +16,7 @@ const ManageCourses = ({ setSelectedCourse, selectedCourse }) => {
         {scheduledAttendances.map((item, idx) => (
           <li key={item.id} className="flex items-center justify-between py-2 border-b">
             <div className="flex gap-2">
-              <span className="font-bold p-3 bg-[olive] text-white flex justify-center items-center">{idx}</span>
+              <span className="font-bold p-3 bg-[olive] text-white flex justify-center items-center">{idx + 1}</span>
 <div>
               <p className="text-sm text-gray-600">{item.date}</p>
  <p className="text-sm text-gray-600">{item.time}</p>
