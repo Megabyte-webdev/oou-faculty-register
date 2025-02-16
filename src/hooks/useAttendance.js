@@ -41,7 +41,7 @@ function useAttendance() {
             user: {
                 id: Uint8Array.from(authDetails.user.id, c => c.charCodeAt(0)),
                 name: authDetails.user.email,
-                displayName: authDetails.user.fullName
+                displayName: authDetails.user.first_name
             },
             pubKeyCredParams: [{ type: "public-key", alg: -7 }], // ECDSA with SHA-256
             timeout: 60000,
