@@ -16,7 +16,7 @@ export default function Courses() {
       <div className="mb-6 flex items-center space-x-4">
         <FaChalkboardTeacher className="text-4xl text-blue-600" />
         <div>
-          <h1 className="text-2xl font-bold">Courses Dashboard</h1>
+          <h1 className="text-2xl font-bold">Course Management</h1>
           <p className="text-gray-600">Manage your courses and attendance</p>
         </div>
       </div>
