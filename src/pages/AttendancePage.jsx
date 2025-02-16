@@ -64,15 +64,17 @@ const AttendancePage = () => {
           </form>
         </div>
 
-        <div className="flex-[2] min-w-96 h-[400px] bg-white p-6 rounded-2xl shadow-lg flex flex-col relative">
+        <div className="flex-[2] w-96 h-[400px] bg-white p-6 rounded-2xl shadow-lg flex flex-col relative">
+<article className="max-w-[70%]">
           <h2 className="text-xl font-semibold mb-4">Student Fingerprint Attendance</h2>
           <p className="text-gray-600 mb-4 font-medium">{scanStatus || 'Place your finger on the scanner to mark attendance.'}</p>
+</article>
           <div className="flex-1 flex justify-center mb-4 h-[60%]">
             {renderFingerprintIcon()}
           </div>
           {renderButtons()}
           <button onClick={() => setIsModalOpen(true)} className="absolute top-4 right-4 mt-4 flex items-center justify-center text-blue-600 hover:text-blue-800 font-medium">
-            <FaExpand className="mr-2" /> Full screen
+            <FaExpand className="mr-2" /> <span className="hidden md:block" >Full screen</span>
           </button>
         </div>
       </section>
