@@ -75,11 +75,11 @@ export const sidebar_keys = {
     inactiveIcon: CoursesInactive,
     route: "/dashboard/courses",
   },
-  instructor: {
-    title: "Lecturers",
+  attendance: {
+    title: "Attendance",
     activeIcon: PersonWithBoard,
     inactiveIcon: InstructorsInactive,
-    route: "/dashboard/lecturers",
+    route: "/dashboard/attendance",
   },
   profile: {
     title: "Profile",

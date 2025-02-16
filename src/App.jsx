@@ -10,7 +10,7 @@ import { AuthenticationContextProvider } from "./context/AuthenticationContext";
 import { ResourceContextProvider } from "./context/ResourceContext";
 
 import { ToastContainer, toast } from "react-toastify";
-import useStudentRoutes from './routes/useStudentRoutes.jsx';
+import useFacultyRoutes from './routes/useFacultyRoutes.jsx';
 // Lazy loaded components
 
 const Login = lazy(() => import('./pages/Login.jsx'));
@@ -26,7 +26,7 @@ function App() {
             <BrowserRouter>
               <Routes>
                 <Route path="/" exact element={<Login />} />
-                {useStudentRoutes()}
+                {useFacultyRoutes()}
                 <Route path="/*" element={<NoPageFound />} />
               </Routes>
             </BrowserRouter>
