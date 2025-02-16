@@ -9,10 +9,10 @@ const ManageCourses = ({ setSelectedCourse, selectedCourse }) => {
   const [selectedAttendance, setSelectedAttendance] = useState(null);
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-lg">
+    <div className="bg-white p-6 rounded-2xl shadow-lg flex flex-col">
       <h2 className="text-xl font-bold mb-4">Scheduled Attendances</h2>
       <button onClick={() => setSelectedCourse(null)} className="mb-4 text-blue-600 hover:underline">Back to Courses</button>
-      <ul>
+      <ul className="mb-3">
         {scheduledAttendances.map((item, idx) => (
           <li key={item.id} className="flex items-center justify-between py-2 border-b">
             <div className="flex gap-2">
@@ -29,8 +29,8 @@ const ManageCourses = ({ setSelectedCourse, selectedCourse }) => {
         ))}
       </ul>
       {selectedAttendance && (
-        <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-2">{selectedAttendance.course} - {selectedAttendance.day}, {selectedAttendance.time}</h3>
+        <div className="my-6">
+          <h3 className="text-lg font-semibold mb-2">{selectedAttendance.date}, {selectedAttendance.time}</h3>
           <ul>
             {/* List all students here with attendance status */}
             <li className="py-2 border-b">John Doe - Present</li>
