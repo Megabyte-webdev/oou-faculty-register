@@ -15,10 +15,12 @@ const ManageCourses = ({ setSelectedCourse, selectedCourse }) => {
       <ul>
         {scheduledAttendances.map((item, idx) => (
           <li key={item.id} className="flex items-center justify-between py-2 border-b">
-            <div>
+            <div className="flex gap-2">
               <span className="font-bold p-3 bg-[olive] text-white">{idx}</span>
+<div>
               <p className="text-sm text-gray-600">{item.day} at {item.time}</p>
               <p className="text-sm text-gray-600">Attendance Taken: {item.attendanceCount}</p>
+</div>
             </div>
             <button onClick={() => setSelectedAttendance(item)} className="px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700">View Details</button>
           </li>
